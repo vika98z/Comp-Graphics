@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -9,13 +10,41 @@ namespace WindowsFormsApp1
         byte[] rgbValues;
         int hueSlider = 0, saturSlider = 0, valueSlider = 0;
 
+
+        private const string regex = @"^[+-]?[0-9]+$"; //Целое число
+
         public Form3() => InitializeComponent();
 
-        private void TrackBar1_Scroll_1(object sender, EventArgs e) => hueSlider = trackBar1.Value;
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (Regex.IsMatch(textBox1.Text, regex))
+            {
+                hueSlider = Convert.ToInt32(textBox1.Text);
+            }
+            else
+                ErrorMessage("Значение должно быть задано целым числом!", "Ошибка");
+        }
 
-        private void TrackBar2_Scroll_1(object sender, EventArgs e) => saturSlider = trackBar2.Value;
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(textBox2.Text, regex))
+            {
+                saturSlider = Convert.ToInt32(textBox2.Text);
+            }
+            else
+                ErrorMessage("Значение должно быть задано целым числом!", "Ошибка");
+        }
 
-        private void TrackBar3_Scroll_1(object sender, EventArgs e) => valueSlider = trackBar3.Value;
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(textBox3.Text, regex))
+            {
+                valueSlider = Convert.ToInt32(textBox3.Text);
+            }
+            else
+                ErrorMessage("Значение должно быть задано целым числом!", "Ошибка");
+        }
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -89,6 +118,9 @@ namespace WindowsFormsApp1
                 satur = (satur > 1f) ? 1f : satur;
                 value = (value > 1f) ? 1f : value;
 
+                hue = (hue < -1f) ? -1f : hue;
+                satur = (satur < -1f) ? -1f : satur;
+                value = (value < -1f) ? -1f : value;
 
                 //Перевод обратно в RGB
 
@@ -185,6 +217,17 @@ namespace WindowsFormsApp1
                         throw;
                     }
                 }
+            }
+        }
+
+        private void ErrorMessage(string message, string caption)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

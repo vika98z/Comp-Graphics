@@ -51,6 +51,8 @@ namespace WindowsFormsApp1
 
             float greyOneValue, greyTwoValue;
 
+            float min = 0;
+
             for (int counter = 0; counter < rgbOneValues.Length; counter += 3)
             {
                 float redValue = rgbOneValues[counter];
@@ -60,9 +62,31 @@ namespace WindowsFormsApp1
                 greyOneValue = 0.3f * redValue + 0.59f * greenValue + 0.11f * blueValue;
                 greyTwoValue = 0.21f * redValue + 0.72f * greenValue + 0.07f * blueValue;
 
+                if (Math.Min((greyOneValue - greyTwoValue), (greyTwoValue - greyOneValue)) < 0)
+                {
+                    if ((greyOneValue - greyTwoValue) < min)
+                        min = (greyOneValue - greyTwoValue);
+                }
+            }
+
+            for (int counter = 0; counter < rgbOneValues.Length; counter += 3)
+            {
+               
+                float redValue = rgbOneValues[counter];
+                float greenValue = rgbOneValues[counter + 1];
+                float blueValue = rgbOneValues[counter + 2];
+
+                greyOneValue = 0.3f * redValue + 0.59f * greenValue + 0.11f * blueValue;
+                greyTwoValue = 0.21f * redValue + 0.72f * greenValue + 0.07f * blueValue;
+
+                if ((greyOneValue - greyTwoValue) < 0)
+                    rgbThreeValues[counter] = rgbThreeValues[counter + 1] = rgbThreeValues[counter + 2] = (byte)(greyOneValue - greyTwoValue + Math.Abs(min));
+                else
+                    rgbThreeValues[counter] = rgbThreeValues[counter + 1] = rgbThreeValues[counter + 2] = (byte)(greyOneValue - greyTwoValue);
+
                 rgbOneValues[counter] = rgbOneValues[counter + 1] = rgbOneValues[counter + 2] = (byte)greyOneValue;
                 rgbTwoValues[counter] = rgbTwoValues[counter + 1] = rgbTwoValues[counter + 2] = (byte)greyTwoValue;
-                rgbThreeValues[counter] = rgbThreeValues[counter + 1] = rgbThreeValues[counter + 2] = (byte)Math.Abs(greyOneValue - greyTwoValue);
+                
 
                 if (counter % 1000 == 0)
                 {

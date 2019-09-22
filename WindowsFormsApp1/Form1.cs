@@ -7,9 +7,6 @@ namespace WindowsFormsApp1
 	public partial class Form1 : Form
 	{
 		byte[] rgbValues;
-        int rSum = 0;
-        int bSum = 0;
-        int gSum = 0;
 
         public Form1()
 		{
@@ -38,9 +35,6 @@ namespace WindowsFormsApp1
 
             for (int counter = 0; counter < rgbValues.Length; counter += 3)
             {
-                rSum += rgbValues[counter];
-                gSum += rgbValues[counter + 1];
-                bSum += rgbValues[counter + 2];
                 rgbValues[counter] = 0;
                 rgbValues[counter + 2] = 0;
             }
@@ -59,21 +53,6 @@ namespace WindowsFormsApp1
 
             rgb_Division();
 
-            //for (int counter = 0; counter < rgbValues.Length; counter += 3)
-            //{
-            //    rgbValues[counter] = 0;
-            //    rgbValues[counter + 2] = 0;
-            //}
-
-
-            //int i = 0;
-            //for (int counter = 0; counter < rgbValues.Length; counter += 3)
-            //{
-            //    bmp.SetPixel(i % bmp.Width, i / bmp.Width,
-            //        Color.FromArgb(rgbValues[counter], rgbValues[counter + 1], rgbValues[counter + 2]));
-            //    i++;
-
-            //}
             picture.Refresh();
             this.buttongist.Enabled = false;
 		}
@@ -81,9 +60,11 @@ namespace WindowsFormsApp1
 		private void buttongist_Click(object sender, EventArgs e)
         {
             rgb_Division();
-            this.chart1.Series["Red"].Points.Add(rSum);
-            this.chart1.Series["Green"].Points.Add(gSum);
-            this.chart1.Series["Blue"].Points.Add(bSum);
+            for (int counter = 0; counter < rgbValues.Length; counter += 3)
+            {
+                if (counter % 1000 == 0)
+                    this.chart1.Series["Green"].Points.Add(rgbValues[counter + 1]);
+            }
             this.buttonrgb.Enabled = true;
             this.buttongist.Enabled = false;
         }
