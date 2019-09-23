@@ -1,0 +1,9 @@
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\bin\Release\RasterAlgorithms.exe.config
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\bin\Release\RasterAlgorithms.exe
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\bin\Release\RasterAlgorithms.pdb
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Release\RasterAlgorithms.Form1.resources
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Release\RasterAlgorithms.Properties.Resources.resources
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Release\RasterAlgorithms.csproj.GenerateResource.cache
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Release\RasterAlgorithms.csproj.CoreCompileInputs.cache
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Release\RasterAlgorithms.exe
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Release\RasterAlgorithms.pdb

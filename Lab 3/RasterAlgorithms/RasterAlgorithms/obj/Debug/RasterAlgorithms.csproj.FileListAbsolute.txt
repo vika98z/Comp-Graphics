@@ -1,0 +1,10 @@
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\bin\Debug\RasterAlgorithms.exe.config
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\bin\Debug\RasterAlgorithms.exe
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\bin\Debug\RasterAlgorithms.pdb
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csprojAssemblyReference.cache
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.Form1.resources
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.Properties.Resources.resources
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csproj.GenerateResource.cache
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csproj.CoreCompileInputs.cache
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.exe
+D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.pdb
