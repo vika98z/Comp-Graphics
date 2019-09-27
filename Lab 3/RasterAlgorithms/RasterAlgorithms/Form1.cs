@@ -12,6 +12,11 @@ namespace RasterAlgorithms
         Point CurrentPoint;
         Point PrevPoint;
         Graphics g;
+        //658; 426
+        int Height = 426;
+        int Width = 658;
+
+
 
         bool isFilling = false;
 
@@ -24,8 +29,6 @@ namespace RasterAlgorithms
         {
             InitializeComponent();
 
-            //PictureFillArea = Bitmap.FromFile("d:\\Users\\stety\\Desktop\\fruits.jpg") as Bitmap;//f.picBitmap;
-            //new Bitmap(panel1.Size.Width, panel1.Size.Height);
             PictureFillArea = (Bitmap)pictureBox1.Image;
 
             panel1.Image = null;
@@ -121,12 +124,20 @@ namespace RasterAlgorithms
             int xr = x;
             Color c;
 
+            
+
             if (!isPictureFilling)
             {
                 do
                 {
                     c = DrawArea.GetPixel(--xl, y);
                 } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (xl > 0));
+
+                do
+                {
+                    c = DrawArea.GetPixel(++xr, y);
+                } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (xr < panel1.Width - 1));
+
             }
             else
             {
@@ -134,17 +145,7 @@ namespace RasterAlgorithms
                 {
                     c = DrawArea.GetPixel(--xl, y);
                 } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(xl, y).ToArgb()) && (xl > 0));
-            }
 
-            if (!isPictureFilling)
-            {
-                do
-                {
-                    c = DrawArea.GetPixel(++xr, y);
-                } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (xr < panel1.Width - 1));
-            }
-            else
-            {
                 do
                 {
                     c = DrawArea.GetPixel(++xr, y);
@@ -163,34 +164,67 @@ namespace RasterAlgorithms
             {
                 for (int i = xl; i <= xr; i++)
                 {
+
                     DrawArea.SetPixel(i, y, PictureFillArea.GetPixel(i, y));
                 }
             }
 
-            for (x = xl; x <= xr; x++)
+            if (!isPictureFilling)
             {
-                c = DrawArea.GetPixel(x, y + dir);
-                if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (y + dir < panel1.Height - 1))
+                for (x = xl; x <= xr; x++)
                 {
-                    x = lineFill(x, y + dir, dir, xl, xr);
+                    c = DrawArea.GetPixel(x, y + dir);
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (y + dir < panel1.Height - 1))
+                    {
+                        x = lineFill(x, y + dir, dir, xl, xr);
+                    }
+                }
+
+                for (x = xl; x < prevXl; x++)
+                {
+                    c = DrawArea.GetPixel(x, y - dir);
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (y - dir > 0))
+                    {
+                        x = lineFill(x, y - dir, -dir, xl, xr);
+                    }
+                }
+
+                for (x = prevXr; x < xr; x++)
+                {
+                    c = DrawArea.GetPixel(x, y - dir);
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (y - dir > 0))
+                    {
+                        x = lineFill(x, y - dir, -dir, xl, xr);
+                    }
                 }
             }
-
-            for (x = xl; x < prevXl; x++)
+            else
             {
-                c = DrawArea.GetPixel(x, y - dir);
-                if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (y - dir > 0))
+                for (x = xl; x <= xr; x++)
                 {
-                    x = lineFill(x, y - dir, -dir, xl, xr);
+                    c = DrawArea.GetPixel(x, y + dir);
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(x, y + dir).ToArgb()) && (y + dir < panel1.Height - 1))
+                    {
+                        x = lineFill(x, y + dir, dir, xl, xr);
+                    }
                 }
-            }
 
-            for (x = prevXr; x < xr; x++)
-            {
-                c = DrawArea.GetPixel(x, y - dir);
-                if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != FillColor.ToArgb()) && (y - dir > 0))
+                for (x = xl; x < prevXl; x++)
                 {
-                    x = lineFill(x, y - dir, -dir, xl, xr);
+                    c = DrawArea.GetPixel(x, y - dir);
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(x, y - dir).ToArgb()) && (y - dir > 0))
+                    {
+                        x = lineFill(x, y - dir, -dir, xl, xr);
+                    }
+                }
+
+                for (x = prevXr; x < xr; x++)
+                {
+                    c = DrawArea.GetPixel(x, y - dir);
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(x, y + dir).ToArgb()) && (y - dir > 0))
+                    {
+                        x = lineFill(x, y - dir, -dir, xl, xr);
+                    }
                 }
             }
 

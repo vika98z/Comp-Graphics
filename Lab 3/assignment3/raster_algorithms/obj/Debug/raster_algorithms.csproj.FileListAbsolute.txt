@@ -1,0 +1,30 @@
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\bin\Debug\raster_algorithms.exe.config
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\bin\Debug\raster_algorithms.exe
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\bin\Debug\raster_algorithms.pdb
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csprojAssemblyReference.cache
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\obj\Debug\raster_algorithms.Form1.resources
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\obj\Debug\raster_algorithms.Properties.Resources.resources
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csproj.GenerateResource.cache
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csproj.CoreCompileInputs.cache
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\obj\Debug\raster_algorithms.exe
+d:\Users\stety\Downloads\ЛАБЫ ГИТ\cs332_computer_graphics-master\cs332_computer_graphics-master\assignment3\raster_algorithms\obj\Debug\raster_algorithms.pdb
+C:\Users\111\Downloads\assignment3\raster_algorithms\bin\Debug\raster_algorithms.exe.config
+C:\Users\111\Downloads\assignment3\raster_algorithms\bin\Debug\raster_algorithms.exe
+C:\Users\111\Downloads\assignment3\raster_algorithms\bin\Debug\raster_algorithms.pdb
+C:\Users\111\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csprojResolveAssemblyReference.cache
+C:\Users\111\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.Form1.resources
+C:\Users\111\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.Properties.Resources.resources
+C:\Users\111\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csproj.GenerateResource.cache
+C:\Users\111\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csproj.CoreCompileInputs.cache
+C:\Users\111\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.exe
+C:\Users\111\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.pdb
+D:\Users\stety\Downloads\assignment3\raster_algorithms\bin\Debug\raster_algorithms.exe.config
+D:\Users\stety\Downloads\assignment3\raster_algorithms\bin\Debug\raster_algorithms.exe
+D:\Users\stety\Downloads\assignment3\raster_algorithms\bin\Debug\raster_algorithms.pdb
+D:\Users\stety\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csprojAssemblyReference.cache
+D:\Users\stety\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.Form1.resources
+D:\Users\stety\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.Properties.Resources.resources
+D:\Users\stety\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csproj.GenerateResource.cache
+D:\Users\stety\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.csproj.CoreCompileInputs.cache
+D:\Users\stety\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.exe
+D:\Users\stety\Downloads\assignment3\raster_algorithms\obj\Debug\raster_algorithms.pdb

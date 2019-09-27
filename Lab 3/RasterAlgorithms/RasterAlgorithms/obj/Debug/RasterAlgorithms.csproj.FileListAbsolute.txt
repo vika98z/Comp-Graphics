@@ -8,3 +8,13 @@ D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorit
 D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csproj.CoreCompileInputs.cache
 D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.exe
 D:\Users\stety\Desktop\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.pdb
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\bin\Debug\RasterAlgorithms.exe.config
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\bin\Debug\RasterAlgorithms.exe
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\bin\Debug\RasterAlgorithms.pdb
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csprojAssemblyReference.cache
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.Form1.resources
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.Properties.Resources.resources
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csproj.GenerateResource.cache
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csproj.CoreCompileInputs.cache
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.exe
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.pdb

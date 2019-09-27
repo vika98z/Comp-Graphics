@@ -110,9 +110,9 @@ namespace WindowsFormsApp1
 
                 //Получаем новые значения со слайдеров
 
-                hue += hueSlider / 360f;
-                satur += saturSlider / 100f;
-                value += valueSlider / 100f;
+                hue = ((hue*360f+ hueSlider) % 360f) / 360f;
+                satur += (saturSlider % 100f) / 100f;
+                value += (valueSlider % 100f) / 100f;
 
                 hue = (hue > 1f) ? 1f : hue;
                 satur = (satur > 1f) ? 1f : satur;
