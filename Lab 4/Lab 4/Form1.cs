@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lab_4
@@ -44,6 +38,14 @@ namespace Lab_4
             Array.Clear(polygon, 0, polygon.Length);
             Array.Resize(ref edge, 2);
             Array.Resize(ref polygon, 0);
+
+            label9.Text = "";
+            label10.Text = "";
+            label11.Text = "";
+            numericUpDown1.Value = numericUpDown2.Value = numericUpDown3.Value = 0;
+            numericUpDown4.Value = numericUpDown5.Value = 100;
+            intersection = new PointF(-1,-1);
+
             pictureBox1.Invalidate();
             minEdgePoint = new Point(9999999, 9999999);
             maxEdgePoint = new Point(-1, -1);
@@ -113,6 +115,35 @@ namespace Lab_4
                     pictureBox1.Invalidate();
                 }
             }
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            if (polygon.Length > 2)
+            {
+                if (isInside(polygon, mainPoint))
+                {
+                    label10.Text = "Принадлежит многоугольнику";
+                }
+                else
+                {
+                    label10.Text = "Не принадлежит многоугольнику";
+                }
+            }
+            else
+                label10.Text = "";
+
+            if (edge.Length > 2)
+            {
+                int n = edge.Length - 3;
+                int pos = findWhereThePoint(mainPoint, edge[n], edge[n - 1]);
+                if (pos > 0)
+                    label11.Text = "Слева от линии";
+                else
+                    label11.Text = "Справа от линии";
+            }
+            else
+                label11.Text = "";
         }
 
         private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -349,6 +380,46 @@ namespace Lab_4
             return i;
         }
 
+        private bool isInside(PointF[] polygon, PointF p)
+        {
+            int n = polygon.Length;
+            if (n < 3) return false;
+
+            PointF extreme = new PointF(pictureBox1.Width, p.Y);
+
+            int count = 0, i = 0;
+            do
+            {
+                int next = (i + 1) % n;
+                PointF intersection = Intersection(polygon[i], polygon[next], p, extreme);
+                if (intersection.X != -1)
+                {
+                    if (orientation(polygon[i], p, polygon[next]) == 0)
+                        return onSegment(polygon[i], p, polygon[next]);
+                    count++;
+                }
+                i = next;
+            } while (i != 0);
+
+            return count % 2 == 1;
+
+            bool onSegment(PointF q, PointF e, PointF r)
+            {
+                if (q.X <= Math.Max(e.X, r.X) && q.X >= Math.Min(e.X, r.X) &&
+                        q.Y <= Math.Max(e.Y, r.Y) && q.Y >= Math.Min(e.Y, r.Y))
+                    return true;
+                return false;
+            }
+
+            int orientation(PointF pp, PointF q, PointF r)
+            {
+                float val = (q.Y - pp.Y) * (r.X - q.X) -
+                          (q.X - pp.X) * (r.Y - q.Y);
+                if (val == 0) return 0;
+                return (val > 0) ? 1 : 2;
+            }
+        }
+
         private void PictureBox1_Paint(object sender, PaintEventArgs e)
         {
             for (int i = 0; i < edge.Length; i += 2)
@@ -362,6 +433,20 @@ namespace Lab_4
             e.Graphics.DrawLine(penColor, startPoint, endPoint);
             e.Graphics.DrawEllipse(Pens.Green, intersection.X - 2, intersection.Y - 2, 5, 5);
             e.Graphics.DrawEllipse(Pens.Red, mainPoint.X - 1, mainPoint.Y - 1, 3, 3);
+        }
+
+        int findWhereThePoint(PointF p, PointF A, PointF B)
+        {
+            PointF a = new PointF();
+            a.X = B.X - A.X;
+            a.Y = B.Y - A.Y;
+
+            PointF b = new PointF();
+            b.X = p.X - A.X;
+            b.Y = p.Y - A.Y;
+
+            float result = a.X * b.Y - a.Y * b.X;
+            return (int)result;
         }
     }
 }

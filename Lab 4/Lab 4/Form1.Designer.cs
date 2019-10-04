@@ -51,6 +51,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.intersec = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -64,7 +67,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(752, 448);
+            this.pictureBox1.Size = new System.Drawing.Size(752, 499);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -75,7 +78,7 @@
             // 
             // clearBtn
             // 
-            this.clearBtn.Location = new System.Drawing.Point(854, 437);
+            this.clearBtn.Location = new System.Drawing.Point(881, 491);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(119, 23);
             this.clearBtn.TabIndex = 1;
@@ -85,7 +88,7 @@
             // 
             // lineBtn
             // 
-            this.lineBtn.Location = new System.Drawing.Point(854, 408);
+            this.lineBtn.Location = new System.Drawing.Point(881, 462);
             this.lineBtn.Name = "lineBtn";
             this.lineBtn.Size = new System.Drawing.Size(119, 23);
             this.lineBtn.TabIndex = 2;
@@ -95,7 +98,7 @@
             // 
             // polygonBtn
             // 
-            this.polygonBtn.Location = new System.Drawing.Point(854, 379);
+            this.polygonBtn.Location = new System.Drawing.Point(881, 433);
             this.polygonBtn.Name = "polygonBtn";
             this.polygonBtn.Size = new System.Drawing.Size(119, 23);
             this.polygonBtn.TabIndex = 3;
@@ -156,7 +159,7 @@
             // 
             // translateBtn
             // 
-            this.translateBtn.Location = new System.Drawing.Point(854, 350);
+            this.translateBtn.Location = new System.Drawing.Point(881, 404);
             this.translateBtn.Name = "translateBtn";
             this.translateBtn.Size = new System.Drawing.Size(119, 23);
             this.translateBtn.TabIndex = 11;
@@ -285,9 +288,8 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(895, 198);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.Size = new System.Drawing.Size(0, 13);
             this.label9.TabIndex = 22;
-            this.label9.Text = "label9";
             // 
             // intersec
             // 
@@ -299,11 +301,40 @@
             this.intersec.UseVisualStyleBackColor = true;
             this.intersec.Click += new System.EventHandler(this.intersec_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(770, 257);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 13);
+            this.label10.TabIndex = 24;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(770, 285);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(0, 13);
+            this.label11.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(770, 321);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Найти положение точки";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1111, 472);
+            this.ClientSize = new System.Drawing.Size(1111, 523);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.intersec);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -363,6 +394,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button intersec;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button1;
     }
 }
 
