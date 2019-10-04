@@ -1,0 +1,10 @@
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\bin\Debug\Lab 4.exe.config
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\bin\Debug\Lab 4.exe
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\bin\Debug\Lab 4.pdb
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\obj\Debug\Lab 4.csprojAssemblyReference.cache
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\obj\Debug\Lab_4.Form1.resources
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\obj\Debug\Lab_4.Properties.Resources.resources
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\obj\Debug\Lab 4.csproj.GenerateResource.cache
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\obj\Debug\Lab 4.csproj.CoreCompileInputs.cache
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\obj\Debug\Lab 4.exe
+d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 4\Lab 4\obj\Debug\Lab 4.pdb
