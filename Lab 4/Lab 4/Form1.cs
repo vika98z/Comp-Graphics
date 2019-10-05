@@ -275,37 +275,40 @@ namespace Lab_4
         private void Rotate(ref PointF Point)
         {
             double pointA, pointB;
+            var angle = (rotateAngle / 180D) * Math.PI;
 
             if (isPolygon)
             {
                 if (!isAroundCenter)
                 {
-                    pointA = -mainPoint.X * Math.Cos(rotateAngle) + mainPoint.Y * Math.Sin(rotateAngle) + mainPoint.X;
-                    pointB = -mainPoint.X * Math.Sin(rotateAngle) - mainPoint.Y * Math.Cos(rotateAngle) + mainPoint.Y;
+                    pointA = -mainPoint.X * Math.Cos(angle) + mainPoint.Y * Math.Sin(angle) + mainPoint.X;
+                    pointB = -mainPoint.X * Math.Sin(angle) - mainPoint.Y * Math.Cos(angle) + mainPoint.Y;
                 }
                 else
                 {
                     var rotatePoint = new PointF((minPolyPoint.X + maxPolyPoint.X) / 2, (minPolyPoint.Y + maxPolyPoint.Y) / 2);
-                    pointA = -rotatePoint.X * Math.Cos(rotateAngle) + rotatePoint.Y * Math.Sin(rotateAngle) + rotatePoint.X;
-                    pointB = -rotatePoint.X * Math.Sin(rotateAngle) - rotatePoint.Y * Math.Cos(rotateAngle) + rotatePoint.Y;
+                    pointA = -rotatePoint.X * Math.Cos(angle) + rotatePoint.Y * Math.Sin(angle) + rotatePoint.X;
+                    pointB = -rotatePoint.X * Math.Sin(angle) - rotatePoint.Y * Math.Cos(angle) + rotatePoint.Y;
                 }
             }
             else
             {
                 var rotatePoint = new PointF((startPoint.X + endPoint.X) / 2, (startPoint.Y + endPoint.Y) / 2);
-                pointA = -rotatePoint.X * Math.Cos(rotateAngle) + rotatePoint.Y * Math.Sin(rotateAngle) + rotatePoint.X;
-                pointB = -rotatePoint.X * Math.Sin(rotateAngle) - rotatePoint.Y * Math.Cos(rotateAngle) + rotatePoint.Y;
+                pointA = -rotatePoint.X * (Math.Cos(angle) - 1) + rotatePoint.Y * Math.Sin(angle);
+                pointB = -rotatePoint.X * Math.Sin(angle) - rotatePoint.Y * (Math.Cos(angle) - 1);
             }
 
             double[] offsetVector = new double[3] { Point.X, Point.Y, 1 };
             double[,] Matrix = new double[3, 3];
             double[] resultVector = new double[3];
 
-            Matrix[0, 0] = Math.Cos(rotateAngle);
-            Matrix[0, 1] = -Math.Sin(rotateAngle);
+            var a = Math.Cos(rotateAngle);
+
+            Matrix[0, 0] = Math.Cos(angle);
+            Matrix[0, 1] = -Math.Sin(angle);
             Matrix[0, 2] = pointA;
-            Matrix[1, 0] = Math.Sin(rotateAngle);
-            Matrix[1, 1] = Math.Cos(rotateAngle);
+            Matrix[1, 0] = Math.Sin(angle);
+            Matrix[1, 1] = Math.Cos(angle);
             Matrix[1, 2] = pointB;
             Matrix[2, 0] = 0;
             Matrix[2, 1] = 0;
@@ -314,7 +317,7 @@ namespace Lab_4
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
-                    resultVector[i] += Matrix[i, j] * offsetVector[j];
+                    resultVector[i] += offsetVector[j] * Matrix[i, j];
             }
 
 
@@ -420,6 +423,20 @@ namespace Lab_4
             }
         }
 
+        int findWhereThePoint(PointF p, PointF A, PointF B)
+        {
+            PointF a = new PointF();
+            a.X = B.X - A.X;
+            a.Y = B.Y - A.Y;
+
+            PointF b = new PointF();
+            b.X = p.X - A.X;
+            b.Y = p.Y - A.Y;
+
+            float result = a.X * b.Y - a.Y * b.X;
+            return (int)result;
+        }
+
         private void PictureBox1_Paint(object sender, PaintEventArgs e)
         {
             for (int i = 0; i < edge.Length; i += 2)
@@ -433,20 +450,6 @@ namespace Lab_4
             e.Graphics.DrawLine(penColor, startPoint, endPoint);
             e.Graphics.DrawEllipse(Pens.Green, intersection.X - 2, intersection.Y - 2, 5, 5);
             e.Graphics.DrawEllipse(Pens.Red, mainPoint.X - 1, mainPoint.Y - 1, 3, 3);
-        }
-
-        int findWhereThePoint(PointF p, PointF A, PointF B)
-        {
-            PointF a = new PointF();
-            a.X = B.X - A.X;
-            a.Y = B.Y - A.Y;
-
-            PointF b = new PointF();
-            b.X = p.X - A.X;
-            b.Y = p.Y - A.Y;
-
-            float result = a.X * b.Y - a.Y * b.X;
-            return (int)result;
         }
     }
 }
