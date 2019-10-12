@@ -388,6 +388,9 @@ namespace Lab_4
             int n = polygon.Length;
             if (n < 3) return false;
 
+            if (Array.Exists(polygon, point => point.Equals(p)))
+                return true;
+
             PointF extreme = new PointF(pictureBox1.Width, p.Y);
 
             int count = 0, i = 0;
