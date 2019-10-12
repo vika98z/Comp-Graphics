@@ -16,7 +16,7 @@ namespace RasterAlgorithms
         int Height = 426;
         int Width = 658;
 
-
+        int clickX = 0, clickY = 0;
 
         bool isFilling = false;
 
@@ -78,6 +78,8 @@ namespace RasterAlgorithms
         {
             if (isFilling)
             {
+                clickX = Convert.ToInt32(e.X);
+                clickY = Convert.ToInt32(e.Y);
                 fill(Convert.ToInt32(e.X), Convert.ToInt32(e.Y));
                 panel1.Image = DrawArea;
             }
@@ -144,12 +146,14 @@ namespace RasterAlgorithms
                 do
                 {
                     c = DrawArea.GetPixel(--xl, y);
-                } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(xl, y).ToArgb()) && (xl > 0));
+                    //} while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(xl, y).ToArgb()) && (xl > 0));
+                } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel((xl - clickX + pictureBox1.Width) % pictureBox1.Width, (y - clickY + pictureBox1.Height) % pictureBox1.Height).ToArgb()) && (xl > 0));
 
                 do
                 {
                     c = DrawArea.GetPixel(++xr, y);
-                } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(xr, y).ToArgb()) && (xr < panel1.Width - 1));
+                    //} while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(xr, y).ToArgb()) && (xr < panel1.Width - 1));
+                } while ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel((xr - clickX + pictureBox1.Width) % pictureBox1.Width, (y - clickY + pictureBox1.Height) % pictureBox1.Height).ToArgb()) && (xr < panel1.Width - 1));
             }
 
             xl++;
@@ -165,7 +169,7 @@ namespace RasterAlgorithms
                 for (int i = xl; i <= xr; i++)
                 {
 
-                    DrawArea.SetPixel(i, y, PictureFillArea.GetPixel(i, y));
+                    DrawArea.SetPixel(i, y, PictureFillArea.GetPixel((i - clickX + pictureBox1.Width) % pictureBox1.Width, (y - clickY + pictureBox1.Height) % pictureBox1.Height));
                 }
             }
 
@@ -203,7 +207,7 @@ namespace RasterAlgorithms
                 for (x = xl; x <= xr; x++)
                 {
                     c = DrawArea.GetPixel(x, y + dir);
-                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(x, y + dir).ToArgb()) && (y + dir < panel1.Height - 1))
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel((x - clickX + pictureBox1.Width) % pictureBox1.Width, (y - clickY + pictureBox1.Height + dir) % pictureBox1.Height).ToArgb()) && (y + dir < panel1.Height - 1))
                     {
                         x = lineFill(x, y + dir, dir, xl, xr);
                     }
@@ -212,7 +216,7 @@ namespace RasterAlgorithms
                 for (x = xl; x < prevXl; x++)
                 {
                     c = DrawArea.GetPixel(x, y - dir);
-                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(x, y - dir).ToArgb()) && (y - dir > 0))
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel((x - clickX + pictureBox1.Width) % pictureBox1.Width, (y - clickY + pictureBox1.Height - dir) % pictureBox1.Height).ToArgb()) && (y - dir > 0))
                     {
                         x = lineFill(x, y - dir, -dir, xl, xr);
                     }
@@ -221,7 +225,7 @@ namespace RasterAlgorithms
                 for (x = prevXr; x < xr; x++)
                 {
                     c = DrawArea.GetPixel(x, y - dir);
-                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel(x, y + dir).ToArgb()) && (y - dir > 0))
+                    if ((c.ToArgb() != BorderColor.ToArgb()) && (c.ToArgb() != PictureFillArea.GetPixel((x - clickX + pictureBox1.Width) % pictureBox1.Width, (y - clickY + pictureBox1.Height + dir) % pictureBox1.Height).ToArgb()) && (y - dir > 0))
                     {
                         x = lineFill(x, y - dir, -dir, xl, xr);
                     }

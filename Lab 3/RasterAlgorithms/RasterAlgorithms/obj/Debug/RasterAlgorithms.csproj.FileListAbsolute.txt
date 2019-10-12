@@ -15,6 +15,5 @@ d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\Ra
 d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.Form1.resources
 d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.Properties.Resources.resources
 d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csproj.GenerateResource.cache
-d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.csproj.CoreCompileInputs.cache
 d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.exe
 d:\Users\stety\Desktop\Компьютерная графика лабы\Lab 3\RasterAlgorithms\RasterAlgorithms\obj\Debug\RasterAlgorithms.pdb
