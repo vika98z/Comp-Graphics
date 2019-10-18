@@ -286,7 +286,10 @@ namespace Lab_4
                 }
                 else
                 {
-                    var rotatePoint = new PointF((minPolyPoint.X + maxPolyPoint.X) / 2, (minPolyPoint.Y + maxPolyPoint.Y) / 2);
+                    var rotatePoint = ariphPoint();//new PointF((minPolyPoint.X + maxPolyPoint.X) / 2, (minPolyPoint.Y + maxPolyPoint.Y) / 2);
+                    //g.DrawEllipse(Pens.Green, rotatePoint.X - 2, rotatePoint.Y - 2, 5, 5);
+                    //var aa = ariphPoint();
+                    //g.DrawEllipse(Pens.Green, aa.X - 2, aa.Y - 2, 5, 5);
                     pointA = -rotatePoint.X * Math.Cos(angle) + rotatePoint.Y * Math.Sin(angle) + rotatePoint.X;
                     pointB = -rotatePoint.X * Math.Sin(angle) - rotatePoint.Y * Math.Cos(angle) + rotatePoint.Y;
                 }
@@ -323,6 +326,17 @@ namespace Lab_4
 
             Point.X = (float)resultVector[0];
             Point.Y = (float)resultVector[1];
+        }
+
+        private PointF ariphPoint()
+        {
+            float allX = 0, allY = 0;
+            foreach (var p in polygon)
+            {
+                allX += p.X;
+                allY += p.Y;
+            }
+            return new PointF(allX / (polygon.Length), allY / (polygon.Length));
         }
 
         private void Scale(ref PointF Point)
@@ -380,6 +394,8 @@ namespace Lab_4
                 i.Y = p0.Y + (t * s1.Y);
 
             }
+            if (i == p0)
+                i = new PointF(-1, -1);
             return i;
         }
 
