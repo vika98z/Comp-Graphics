@@ -67,6 +67,9 @@ namespace Bezier
                 points[pointToChangeInd] = e.Location;
                 pointsFirst[temp] = e.Location;
                 SetNewPoint = false;
+
+                RecountPoints();
+
                 Bezier_click(sender, e);
             }
 
