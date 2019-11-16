@@ -65,7 +65,8 @@ namespace Bezier
             {
                 var temp = pointsFirst.FindIndex(p => p == points[pointToChangeInd]);
                 points[pointToChangeInd] = e.Location;
-                pointsFirst[temp] = e.Location;
+                if (temp >=0)
+                    pointsFirst[temp] = e.Location;
                 SetNewPoint = false;
 
                 RecountPoints();

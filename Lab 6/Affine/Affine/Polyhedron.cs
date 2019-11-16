@@ -1,24 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Affine
 {
     class Polyhedron
     {
-        public List<Polygon> Edges;
+        public List<Polygon> Facets;
+        public MPoint PolyCenter = new MPoint(360, 360, 0);
 
         public Polyhedron()
         {
-            Edges = new List<Polygon>();
+            Facets = new List<Polygon>();
+            PolyCenter = new MPoint(360, 360, 0);
         }
 
         public Polyhedron(List<Polygon> list)
         {
-            Edges = new List<Polygon>();
-            Edges = list;//????
+            Facets = new List<Polygon>();
+            Facets = list;
+            PolyCenter = new MPoint(360, 360, 0);
+        }
+
+        public List<MPoint> AllPoints()
+        {
+            List<MPoint> result = new List<MPoint>();
+
+            foreach (var pol in Facets)
+            {
+                foreach (var e in pol.Edges)
+                {
+                    result.Add(e.First);
+                    result.Add(e.Second);
+                }
+            }
+
+            return result;
         }
     }
 }

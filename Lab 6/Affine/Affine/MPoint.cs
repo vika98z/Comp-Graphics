@@ -19,11 +19,23 @@ namespace Affine
             Z = z;
         }
 
+        public MPoint(float x, float y)
+        {
+            X = x;
+            Y = y;
+            Z = 0;
+        }
+
         public MPoint()
         {
             X = 0;
             Y = 0;
             Z = 0;
+        }
+
+        public MPoint Copy()
+        {
+            return (MPoint)this.MemberwiseClone();
         }
     }
 }

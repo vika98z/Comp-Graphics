@@ -20,7 +20,7 @@ namespace Affine
             Second = e.Second;
         }
 
-        Edge()
+        public Edge()
         {
             First = new MPoint();
             Second = new MPoint();
