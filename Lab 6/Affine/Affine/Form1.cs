@@ -35,9 +35,7 @@ namespace Affine
                 //TRANSLATE
                 int offsetX = (int)numericUpDown1.Value, offsetY = (int)numericUpDown2.Value, offsetZ = (int)numericUpDown3.Value;
                 figure.translate(offsetX, offsetY, offsetZ);
-                g.Clear(Color.White);
-                figure.show(g, projection);
-
+                
                 //ROTATE
                 int rotateAngleX = (int)numericUpDown4.Value;
                 figure.rotate(rotateAngleX, 0);
@@ -65,6 +63,9 @@ namespace Affine
                     figure.scale(kx, ky, kz);
                 }
             }
+
+            g.Clear(Color.White);
+            figure.show(g, projection);
         }
 
         //DRAW FIGURE
