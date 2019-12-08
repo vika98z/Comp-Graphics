@@ -8,7 +8,7 @@ namespace Affine
     class Polyhedron
     {
         public List<Polygon> Polygons { get; set; } = null;
-        public Point3d Center { get; set; } = new Point3d(0, 0, 0);
+        public Point3D Center { get; set; } = new Point3D(0, 0, 0);
         public Polyhedron(List<Polygon> fs = null)
         {
             if (fs != null)
@@ -21,7 +21,7 @@ namespace Affine
         public Polyhedron(Polyhedron polyhedron)
         {
             Polygons = polyhedron.Polygons.Select(face => new Polygon(face)).ToList();
-            Center = new Point3d(polyhedron.Center);
+            Center = new Point3D(polyhedron.Center);
         }
 
         public Polyhedron(string s)
@@ -59,7 +59,7 @@ namespace Affine
         public void Show(Graphics g, Projection pr = 0, Pen pen = null)
         {
             foreach (Polygon f in Polygons)
-                f.show(g, pr, pen);
+                f.Show(g, pr, pen);
         }
 
         public void Translate(float x, float y, float z)
@@ -110,12 +110,12 @@ namespace Affine
         public void Hexahedron(float size = 50)
         {
             Polygon f = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(-size, size, size),
-                    new Point3d(size, size, size),
-                    new Point3d(size, -size, size),
-                    new Point3d(-size, -size, size)
+                    new Point3D(-size, size, size),
+                    new Point3D(size, size, size),
+                    new Point3D(size, -size, size),
+                    new Point3D(-size, -size, size)
                 }
             );
 
@@ -123,52 +123,52 @@ namespace Affine
             Polygons = new List<Polygon> { f };
 
             Polygon f1 = new Polygon(
-                    new List<Point3d>
+                    new List<Point3D>
                     {
-                        new Point3d(-size, size, -size),
-                        new Point3d(-size, -size, -size),
-                        new Point3d(size, -size, -size),
-                        new Point3d(size, size, -size)
+                        new Point3D(-size, size, -size),
+                        new Point3D(-size, -size, -size),
+                        new Point3D(size, -size, -size),
+                        new Point3D(size, size, -size)
                     });
 
             Polygons.Add(f1);
 
-            List<Point3d> l2 = new List<Point3d>
+            List<Point3D> l2 = new List<Point3D>
             {
-                new Point3d(f.Points[2]),
-                new Point3d(f1.Points[2]),
-                new Point3d(f1.Points[1]),
-                new Point3d(f.Points[3]),
+                new Point3D(f.Points[2]),
+                new Point3D(f1.Points[2]),
+                new Point3D(f1.Points[1]),
+                new Point3D(f.Points[3]),
             };
             Polygon f2 = new Polygon(l2);
             Polygons.Add(f2);
 
-            List<Point3d> l3 = new List<Point3d>
+            List<Point3D> l3 = new List<Point3D>
             {
-                new Point3d(f1.Points[0]),
-                new Point3d(f1.Points[3]),
-                new Point3d(f.Points[1]),
-                new Point3d(f.Points[0]),
+                new Point3D(f1.Points[0]),
+                new Point3D(f1.Points[3]),
+                new Point3D(f.Points[1]),
+                new Point3D(f.Points[0]),
             };
             Polygon f3 = new Polygon(l3);
             Polygons.Add(f3);
 
-            List<Point3d> l4 = new List<Point3d>
+            List<Point3D> l4 = new List<Point3D>
             {
-                new Point3d(f1.Points[0]),
-                new Point3d(f.Points[0]),
-                new Point3d(f.Points[3]),
-                new Point3d(f1.Points[1])
+                new Point3D(f1.Points[0]),
+                new Point3D(f.Points[0]),
+                new Point3D(f.Points[3]),
+                new Point3D(f1.Points[1])
             };
             Polygon f4 = new Polygon(l4);
             Polygons.Add(f4);
 
-            List<Point3d> l5 = new List<Point3d>
+            List<Point3D> l5 = new List<Point3D>
             {
-                new Point3d(f1.Points[3]),
-                new Point3d(f1.Points[2]),
-                new Point3d(f.Points[2]),
-                new Point3d(f.Points[1])
+                new Point3D(f1.Points[3]),
+                new Point3D(f1.Points[2]),
+                new Point3D(f.Points[2]),
+                new Point3D(f.Points[1])
             };
             Polygon f5 = new Polygon(l5);
             Polygons.Add(f5);
@@ -184,38 +184,38 @@ namespace Affine
                 cube.Hexahedron();
             }
             Polygon f0 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[0].Points[0]),
-                    new Point3d(cube.Polygons[1].Points[1]),
-                    new Point3d(cube.Polygons[1].Points[3])
+                    new Point3D(cube.Polygons[0].Points[0]),
+                    new Point3D(cube.Polygons[1].Points[1]),
+                    new Point3D(cube.Polygons[1].Points[3])
                 }
             );
 
             Polygon f1 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[1].Points[3]),
-                    new Point3d(cube.Polygons[1].Points[1]),
-                    new Point3d(cube.Polygons[0].Points[2])
+                    new Point3D(cube.Polygons[1].Points[3]),
+                    new Point3D(cube.Polygons[1].Points[1]),
+                    new Point3D(cube.Polygons[0].Points[2])
                 }
             );
 
             Polygon f2 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[0].Points[2]),
-                    new Point3d(cube.Polygons[1].Points[1]),
-                    new Point3d(cube.Polygons[0].Points[0])
+                    new Point3D(cube.Polygons[0].Points[2]),
+                    new Point3D(cube.Polygons[1].Points[1]),
+                    new Point3D(cube.Polygons[0].Points[0])
                 }
             );
 
             Polygon f3 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[0].Points[2]),
-                    new Point3d(cube.Polygons[0].Points[0]),
-                    new Point3d(cube.Polygons[1].Points[3])
+                    new Point3D(cube.Polygons[0].Points[2]),
+                    new Point3D(cube.Polygons[0].Points[0]),
+                    new Point3D(cube.Polygons[1].Points[3])
                 }
             );
 
@@ -232,74 +232,74 @@ namespace Affine
             }
 
             Polygon f0 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[2].Center),
-                    new Point3d(cube.Polygons[1].Center),
-                    new Point3d(cube.Polygons[4].Center)
+                    new Point3D(cube.Polygons[2].Center),
+                    new Point3D(cube.Polygons[1].Center),
+                    new Point3D(cube.Polygons[4].Center)
                 }
             );
 
             Polygon f1 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[2].Center),
-                    new Point3d(cube.Polygons[1].Center),
-                    new Point3d(cube.Polygons[5].Center)
+                    new Point3D(cube.Polygons[2].Center),
+                    new Point3D(cube.Polygons[1].Center),
+                    new Point3D(cube.Polygons[5].Center)
                 }
             );
 
             Polygon f2 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[2].Center),
-                    new Point3d(cube.Polygons[5].Center),
-                    new Point3d(cube.Polygons[0].Center)
+                    new Point3D(cube.Polygons[2].Center),
+                    new Point3D(cube.Polygons[5].Center),
+                    new Point3D(cube.Polygons[0].Center)
                 }
             );
 
             Polygon f3 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[2].Center),
-                    new Point3d(cube.Polygons[0].Center),
-                    new Point3d(cube.Polygons[4].Center)
+                    new Point3D(cube.Polygons[2].Center),
+                    new Point3D(cube.Polygons[0].Center),
+                    new Point3D(cube.Polygons[4].Center)
                 }
             );
 
             Polygon f4 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[3].Center),
-                    new Point3d(cube.Polygons[1].Center),
-                    new Point3d(cube.Polygons[4].Center)
+                    new Point3D(cube.Polygons[3].Center),
+                    new Point3D(cube.Polygons[1].Center),
+                    new Point3D(cube.Polygons[4].Center)
                 }
             );
 
             Polygon f5 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[3].Center),
-                    new Point3d(cube.Polygons[1].Center),
-                    new Point3d(cube.Polygons[5].Center)
+                    new Point3D(cube.Polygons[3].Center),
+                    new Point3D(cube.Polygons[1].Center),
+                    new Point3D(cube.Polygons[5].Center)
                 }
             );
 
             Polygon f6 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[3].Center),
-                    new Point3d(cube.Polygons[5].Center),
-                    new Point3d(cube.Polygons[0].Center)
+                    new Point3D(cube.Polygons[3].Center),
+                    new Point3D(cube.Polygons[5].Center),
+                    new Point3D(cube.Polygons[0].Center)
                 }
             );
 
             Polygon f7 = new Polygon(
-                new List<Point3d>
+                new List<Point3D>
                 {
-                    new Point3d(cube.Polygons[3].Center),
-                    new Point3d(cube.Polygons[0].Center),
-                    new Point3d(cube.Polygons[4].Center)
+                    new Point3D(cube.Polygons[3].Center),
+                    new Point3D(cube.Polygons[0].Center),
+                    new Point3D(cube.Polygons[4].Center)
                 }
             );
 
@@ -316,38 +316,38 @@ namespace Affine
             float r1 = size * (float)Math.Sqrt(3) / 4;
             float r = size * (3 + (float)Math.Sqrt(5)) / (4 * (float)Math.Sqrt(3));
 
-            Point3d up_center = new Point3d(0, -r1, 0);
-            Point3d down_center = new Point3d(0, r1, 0);
+            Point3D up_center = new Point3D(0, -r1, 0);
+            Point3D down_center = new Point3D(0, r1, 0);
 
             double a = Math.PI / 2;
-            List<Point3d> up_points = new List<Point3d>();
+            List<Point3D> up_points = new List<Point3D>();
             for (int i = 0; i < 5; ++i)
             {
-                up_points.Add(new Point3d(up_center.X + r * (float)Math.Cos(a), up_center.Y, up_center.Z - r * (float)Math.Sin(a)));
+                up_points.Add(new Point3D(up_center.X + r * (float)Math.Cos(a), up_center.Y, up_center.Z - r * (float)Math.Sin(a)));
                 a += 2 * Math.PI / 5;
             }
 
             a = Math.PI / 2 - Math.PI / 5;
-            List<Point3d> down_points = new List<Point3d>();
+            List<Point3D> down_points = new List<Point3D>();
             for (int i = 0; i < 5; ++i)
             {
-                down_points.Add(new Point3d(down_center.X + r * (float)Math.Cos(a), down_center.Y, down_center.Z - r * (float)Math.Sin(a)));
+                down_points.Add(new Point3D(down_center.X + r * (float)Math.Cos(a), down_center.Y, down_center.Z - r * (float)Math.Sin(a)));
                 a += 2 * Math.PI / 5;
             }
 
             var R = Math.Sqrt(2 * (5 + Math.Sqrt(5))) * size / 4;
 
-            Point3d p_up = new Point3d(up_center.X, (float)(-R), up_center.Z);
-            Point3d p_down = new Point3d(down_center.X, (float)R, down_center.Z);
+            Point3D p_up = new Point3D(up_center.X, (float)(-R), up_center.Z);
+            Point3D p_down = new Point3D(down_center.X, (float)R, down_center.Z);
 
             for (int i = 0; i < 5; ++i)
             {
                 Polygons.Add(
-                    new Polygon(new List<Point3d>
+                    new Polygon(new List<Point3D>
                     {
-                        new Point3d(p_up),
-                        new Point3d(up_points[i]),
-                        new Point3d(up_points[(i+1) % 5]),
+                        new Point3D(p_up),
+                        new Point3D(up_points[i]),
+                        new Point3D(up_points[(i+1) % 5]),
                     })
                     );
             }
@@ -355,11 +355,11 @@ namespace Affine
             for (int i = 0; i < 5; ++i)
             {
                 Polygons.Add(
-                    new Polygon(new List<Point3d>
+                    new Polygon(new List<Point3D>
                     {
-                        new Point3d(p_down),
-                        new Point3d(down_points[i]),
-                        new Point3d(down_points[(i+1) % 5]),
+                        new Point3D(p_down),
+                        new Point3D(down_points[i]),
+                        new Point3D(down_points[(i+1) % 5]),
                     })
                     );
             }
@@ -367,20 +367,20 @@ namespace Affine
             for (int i = 0; i < 5; ++i)
             {
                 Polygons.Add(
-                    new Polygon(new List<Point3d>
+                    new Polygon(new List<Point3D>
                     {
-                        new Point3d(up_points[i]),
-                        new Point3d(up_points[(i+1) % 5]),
-                        new Point3d(down_points[(i+1) % 5])
+                        new Point3D(up_points[i]),
+                        new Point3D(up_points[(i+1) % 5]),
+                        new Point3D(down_points[(i+1) % 5])
                     })
                     );
 
                 Polygons.Add(
-                    new Polygon(new List<Point3d>
+                    new Polygon(new List<Point3D>
                     {
-                        new Point3d(up_points[i]),
-                        new Point3d(down_points[i]),
-                        new Point3d(down_points[(i+1) % 5])
+                        new Point3D(up_points[i]),
+                        new Point3D(down_points[i]),
+                        new Point3D(down_points[(i+1) % 5])
                     })
                     );
             }
@@ -394,81 +394,81 @@ namespace Affine
             Polyhedron ik = new Polyhedron();
             ik.Icosahedron();
 
-            List<Point3d> pts = new List<Point3d>();
+            List<Point3D> pts = new List<Point3D>();
             foreach (Polygon f in ik.Polygons)
             {
                 pts.Add(f.Center);
             }
 
-            Polygons.Add(new Polygon(new List<Point3d>
+            Polygons.Add(new Polygon(new List<Point3D>
             {
-                new Point3d(pts[0]),
-                new Point3d(pts[1]),
-                new Point3d(pts[2]),
-                new Point3d(pts[3]),
-                new Point3d(pts[4])
+                new Point3D(pts[0]),
+                new Point3D(pts[1]),
+                new Point3D(pts[2]),
+                new Point3D(pts[3]),
+                new Point3D(pts[4])
             }));
 
-            Polygons.Add(new Polygon(new List<Point3d>
+            Polygons.Add(new Polygon(new List<Point3D>
             {
-                new Point3d(pts[5]),
-                new Point3d(pts[6]),
-                new Point3d(pts[7]),
-                new Point3d(pts[8]),
-                new Point3d(pts[9])
+                new Point3D(pts[5]),
+                new Point3D(pts[6]),
+                new Point3D(pts[7]),
+                new Point3D(pts[8]),
+                new Point3D(pts[9])
             }));
 
             for (int i = 0; i < 5; ++i)
             {
-                Polygons.Add(new Polygon(new List<Point3d>
+                Polygons.Add(new Polygon(new List<Point3D>
                 {
-                    new Point3d(pts[i]),
-                    new Point3d(pts[(i + 1) % 5]),
-                    new Point3d(pts[(i == 4) ? 10 : 2*i + 12]),
-                    new Point3d(pts[(i == 4) ? 11 : 2*i + 13]),
-                    new Point3d(pts[2*i + 10])
+                    new Point3D(pts[i]),
+                    new Point3D(pts[(i + 1) % 5]),
+                    new Point3D(pts[(i == 4) ? 10 : 2*i + 12]),
+                    new Point3D(pts[(i == 4) ? 11 : 2*i + 13]),
+                    new Point3D(pts[2*i + 10])
                 }));
             }
 
-            Polygons.Add(new Polygon(new List<Point3d>
+            Polygons.Add(new Polygon(new List<Point3D>
             {
-                new Point3d(pts[5]),
-                new Point3d(pts[6]),
-                new Point3d(pts[13]),
-                new Point3d(pts[10]),
-                new Point3d(pts[11])
+                new Point3D(pts[5]),
+                new Point3D(pts[6]),
+                new Point3D(pts[13]),
+                new Point3D(pts[10]),
+                new Point3D(pts[11])
             }));
-            Polygons.Add(new Polygon(new List<Point3d>
+            Polygons.Add(new Polygon(new List<Point3D>
             {
-                new Point3d(pts[6]),
-                new Point3d(pts[7]),
-                new Point3d(pts[15]),
-                new Point3d(pts[12]),
-                new Point3d(pts[13])
+                new Point3D(pts[6]),
+                new Point3D(pts[7]),
+                new Point3D(pts[15]),
+                new Point3D(pts[12]),
+                new Point3D(pts[13])
             }));
-            Polygons.Add(new Polygon(new List<Point3d>
+            Polygons.Add(new Polygon(new List<Point3D>
             {
-                new Point3d(pts[7]),
-                new Point3d(pts[8]),
-                new Point3d(pts[17]),
-                new Point3d(pts[14]),
-                new Point3d(pts[15])
+                new Point3D(pts[7]),
+                new Point3D(pts[8]),
+                new Point3D(pts[17]),
+                new Point3D(pts[14]),
+                new Point3D(pts[15])
             }));
-            Polygons.Add(new Polygon(new List<Point3d>
+            Polygons.Add(new Polygon(new List<Point3D>
             {
-                new Point3d(pts[8]),
-                new Point3d(pts[9]),
-                new Point3d(pts[19]),
-                new Point3d(pts[16]),
-                new Point3d(pts[17])
+                new Point3D(pts[8]),
+                new Point3D(pts[9]),
+                new Point3D(pts[19]),
+                new Point3D(pts[16]),
+                new Point3D(pts[17])
             }));
-            Polygons.Add(new Polygon(new List<Point3d>
+            Polygons.Add(new Polygon(new List<Point3D>
             {
-                new Point3d(pts[9]),
-                new Point3d(pts[5]),
-                new Point3d(pts[11]),
-                new Point3d(pts[18]),
-                new Point3d(pts[19])
+                new Point3D(pts[9]),
+                new Point3D(pts[5]),
+                new Point3D(pts[11]),
+                new Point3D(pts[18]),
+                new Point3D(pts[19])
             }));
 
             UpdateCenter();

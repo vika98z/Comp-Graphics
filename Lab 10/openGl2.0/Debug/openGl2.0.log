@@ -1,0 +1,14 @@
+﻿  Source.cpp
+C:\Users\111\source\repos\openGl2.0\Source.cpp(270,23): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\111\source\repos\openGl2.0\Source.cpp(304,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(305,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(306,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(316,39): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\Source.cpp(326,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(327,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(328,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(337,48): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\Source.cpp(348,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(349,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\Source.cpp(350,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+  openGl2.0.vcxproj -> C:\Users\111\source\repos\openGl2.0\Debug\openGl2.0.exe

@@ -6,13 +6,13 @@ namespace Affine
 {
     public class Edge
     {
-        public Point3d First { get; set; }
-        public Point3d Second { get; set; }
+        public Point3D First { get; set; }
+        public Point3D Second { get; set; }
 
-        public Edge(Point3d p1, Point3d p2)
+        public Edge(Point3D p1, Point3D p2)
         {
-            First = new Point3d(p1);
-            Second = new Point3d(p2);
+            First = new Point3D(p1);
+            Second = new Point3D(p2);
         }
 
         private List<PointF> make_perspective(int k = 1000)

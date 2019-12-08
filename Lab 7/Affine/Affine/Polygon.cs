@@ -3,29 +3,22 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Affine
 {
     public class Polygon
     {
-        public List<Point3d> Points { get; }
-        public Point3d Center { get; set; } = new Point3d(0, 0, 0);
-        public List<float> Normal { get; set; }
-        public bool IsVisible { get; set; }
+        public List<Point3D> Points { get; }
+        public Point3D Center { get; set; } = new Point3D(0, 0, 0);
         public Polygon(Polygon face)
         {
-            Points = face.Points.Select(pt => new Point3d(pt.X, pt.Y, pt.Z)).ToList();
-            Center = new Point3d(face.Center);
-            if (Normal != null)
-                Normal = new List<float>(face.Normal);
-            IsVisible = face.IsVisible;
+            Points = face.Points.Select(pt => new Point3D(pt.X, pt.Y, pt.Z)).ToList();
+            Center = new Point3D(face.Center);
         }
 
         public Polygon(string s)
         {
-            Points = new List<Point3d>();
+            Points = new List<Point3D>();
 
             var arr = s.Split(' ');
 
@@ -36,17 +29,17 @@ namespace Affine
                 float x = (float)Math.Truncate(float.Parse(arr[i], CultureInfo.InvariantCulture));
                 float y = (float)Math.Truncate(float.Parse(arr[i + 1], CultureInfo.InvariantCulture));
                 float z = (float)Math.Truncate(float.Parse(arr[i + 2], CultureInfo.InvariantCulture));
-                Point3d p = new Point3d(x, y, z);
+                Point3D p = new Point3D(x, y, z);
                 Points.Add(p);
             }
             UpdateCenter();
         }
 
-        public Polygon(List<Point3d> pts = null)
+        public Polygon(List<Point3D> pts = null)
         {
             if (pts != null)
             {
-                Points = new List<Point3d>(pts);
+                Points = new List<Point3D>(pts);
                 UpdateCenter();
             }
         }
@@ -56,7 +49,7 @@ namespace Affine
             Center.X = 0;
             Center.Y = 0;
             Center.Z = 0;
-            foreach (Point3d p in Points)
+            foreach (Point3D p in Points)
             {
                 Center.X += p.X;
                 Center.Y += p.Y;
@@ -93,7 +86,7 @@ namespace Affine
         {
             List<PointF> res = new List<PointF>();
 
-            foreach (Point3d p in Points)
+            foreach (Point3D p in Points)
             {
                 res.Add(p.make_perspective(k));
             }
@@ -104,7 +97,7 @@ namespace Affine
         {
             List<PointF> res = new List<PointF>();
 
-            foreach (Point3d p in Points)
+            foreach (Point3D p in Points)
                 res.Add(p.make_isometric());
 
             return res;
@@ -114,13 +107,13 @@ namespace Affine
         {
             List<PointF> res = new List<PointF>();
 
-            foreach (Point3d p in Points)
+            foreach (Point3D p in Points)
                 res.Add(p.make_orthographic(a));
 
             return res;
         }
 
-        public void show(Graphics g, Projection pr = 0, Pen pen = null, Edge camera = null, float k = 1000)
+        public void Show(Graphics g, Projection pr = 0, Pen pen = null)
         {
             if (pen == null)
                 pen = Pens.Black;
@@ -142,9 +135,7 @@ namespace Affine
                     pts = make_orthographic(Axis.AXIS_Z);
                     break;
                 default:
-                    if (camera != null)
-                        pts = make_perspective(k, camera.First.Z);
-                    else pts = make_perspective(k);
+                    pts = make_perspective(1000);
                     break;
             }
 
@@ -159,21 +150,21 @@ namespace Affine
         
         public void translate(float x, float y, float z)
         {
-            foreach (Point3d p in Points)
+            foreach (Point3D p in Points)
                 p.translate(x, y, z);
             UpdateCenter();
         }
 
         public void rotate(double angle, Axis a, Edge line = null)
         {
-            foreach (Point3d p in Points)
+            foreach (Point3D p in Points)
                 p.rotate(angle, a, line);
             UpdateCenter();
         }
 
         public void scale(float kx, float ky, float kz)
         {
-            foreach (Point3d p in Points)
+            foreach (Point3D p in Points)
                 p.scale(kx, ky, kz);
             UpdateCenter();
         }

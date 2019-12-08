@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -151,11 +152,11 @@ namespace Affine
         private void RotateAroundLine()
         {
             Edge rotateLine = new Edge(
-                                new Point3d(
+                                new Point3D(
                                     (float)numericUpDown12.Value,
                                     (float)numericUpDown11.Value,
                                     (float)numericUpDown10.Value),
-                                new Point3d(
+                                new Point3D(
                                     (float)numericUpDown15.Value,
                                     (float)numericUpDown14.Value,
                                     (float)numericUpDown13.Value));
@@ -232,6 +233,42 @@ namespace Affine
                 text = figure.Save();                
             }
             System.IO.File.WriteAllText(filename, text);
+        }
+
+        //ROTATION FIGURE
+        private void button7_Click(object sender, EventArgs e)
+        {
+            List<Point3D> points = new List<Point3D>();
+
+            foreach (var p in listBox1.Items)
+            {
+                var arr = ((string)p).Split(',');
+
+                points.Add(new Point3D(float.Parse(arr[0]), float.Parse(arr[1]), float.Parse(arr[2])));
+            }
+            Axis axis = 0;
+            switch (comboBox5.SelectedItem.ToString())
+            {
+                case "OX":
+                        axis = 0;
+                        break;
+                case "OY":
+                        axis = Axis.AXIS_Y;
+                        break;
+                case "OZ":
+                        axis = Axis.AXIS_Z;
+                        break;
+                default:
+                        axis = 0;
+                        break;
+            }
+
+            var density = (int)numericUpDown17.Value;
+
+            RotationFigure rotateFigure = new RotationFigure(points, axis, density);
+
+            g.Clear(Color.White);
+            rotateFigure.Show(g, 0);
         }
     }
 }
