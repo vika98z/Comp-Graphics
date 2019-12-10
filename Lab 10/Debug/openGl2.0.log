@@ -1,0 +1,17 @@
+﻿  task2.cpp
+C:\Users\111\source\repos\openGl2.0\task2.cpp(33,23): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\111\source\repos\openGl2.0\task2.cpp(40,10): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(40,22): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(68,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(69,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(70,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(80,37): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\task2.cpp(90,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(91,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(92,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(101,45): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\task2.cpp(112,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(113,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(114,12): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\task2.cpp(123,45): warning C4305: аргумент: усечение из "double" в "GLfloat"
+  openGl2.0.vcxproj -> C:\Users\111\source\repos\openGl2.0\Debug\openGl2.0.exe

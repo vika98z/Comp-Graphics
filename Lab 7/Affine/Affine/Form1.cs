@@ -239,13 +239,14 @@ namespace Affine
         private void button7_Click(object sender, EventArgs e)
         {
             List<Point3D> points = new List<Point3D>();
+            var lines = textBox1.Text.Split('\n');
 
-            foreach (var p in listBox1.Items)
+            foreach (var p in lines)
             {
                 var arr = ((string)p).Split(',');
-
                 points.Add(new Point3D(float.Parse(arr[0]), float.Parse(arr[1]), float.Parse(arr[2])));
             }
+
             Axis axis = 0;
             switch (comboBox5.SelectedItem.ToString())
             {
@@ -263,12 +264,23 @@ namespace Affine
                         break;
             }
 
-            var density = (int)numericUpDown17.Value;
+            RotationFigure rotateFigure = new RotationFigure(points, axis, (int)numericUpDown17.Value);
 
-            RotationFigure rotateFigure = new RotationFigure(points, axis, density);
+            figure = rotateFigure;
 
             g.Clear(Color.White);
             rotateFigure.Show(g, 0);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Graphic Graph = new Graphic((int)numericUpDown18.Value, (int)numericUpDown20.Value, (int)numericUpDown19.Value, 
+                (int)numericUpDown21.Value, (int)numericUpDown22.Value, comboBox6.SelectedIndex);
+
+            figure = Graph;
+
+            g.Clear(Color.White);
+            Graph.Show(g, 0);
         }
     }
 }
