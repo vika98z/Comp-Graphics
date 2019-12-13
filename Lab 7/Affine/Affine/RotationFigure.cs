@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Affine
 {
@@ -24,17 +20,11 @@ namespace Affine
             //Polygons = new List<Polygon>();
             //Points.AddRange(startPoints);
             float angle = 360f / count;
-
-            var rot_line = new Edge(new Point3D(0, 0, 0), new Point3D(0, 1, 0));
-
-            float Ax = rot_line.First.X, Ay = rot_line.First.Y, Az = rot_line.First.Z;
-
+            
             foreach (var p in startPoints)
             {
-                //p.translate(-Ax, -Ay, -Az);
                 rotatedPoints.Add(new Point3D(p.X, p.Y, p.Z));
-            }
-                
+            }                
 
             for (int i = 0; i < count; ++i)
             {
@@ -43,7 +33,7 @@ namespace Affine
 
                 for (int j = 1; j < startPoints.Count; ++j)
                 {
-                    Polygon f = new Polygon(
+                    Polygon p = new Polygon(
                                     new List<Point3D>()
                                     { 
                                         new Point3D(startPoints[j - 1]), 
@@ -52,7 +42,7 @@ namespace Affine
                                         new Point3D(startPoints[j])
                                     });
 
-                    Polygons.Add(f);
+                    Polygons.Add(p);
                 }
 
                 foreach (var p in startPoints)
@@ -70,25 +60,6 @@ namespace Affine
 
             //var startCount = startPoints.Count;
 
-            //for (int i = 0; i < count; ++i)
-            //{
-            //    double angle = 360f / (count);
-            //    for (int j = 0; j < Points.Count; j++)
-            //    //for (int i1 = 0; i1 < startPoints.Count; i1++)
-            //    {
-            //        //if (j >= (Points.Count - startCount - 5))
-            //        {
-            //            Point3D point = Points[j];
-            //            //Point3D point = startPoints[i1];
-            //            var newPoint = point.rotateNewPoint(point, angle, axis);
-            //            //point = point.rotateNewPoint(point, angle, axis);
-            //            rotatedPoints.Add(newPoint);
-            //            //startPoints[i1] = point;
-            //        }
-            //    }
-            //    Points.AddRange(rotatedPoints);
-            //    rotatedPoints.Clear();
-            //}
 
             //Points.Add(Points[0]);
             //Points.Add(Points[1]);

@@ -84,7 +84,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label27 = new System.Windows.Forms.Label();
             this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -815,17 +814,6 @@
             this.label26.TabIndex = 56;
             this.label26.Text = "Образующая";
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "0,0,0",
-            "100,100,100"});
-            this.listBox1.Location = new System.Drawing.Point(1017, 543);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(173, 56);
-            this.listBox1.TabIndex = 57;
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -1033,7 +1021,8 @@
             this.comboBox6.Items.AddRange(new object[] {
             "x + y",
             "x^2 + y^2",
-            "Sin(x) * Cos(Y)"});
+            "3Sin(x) * 3Cos(Y)",
+            "5*Sin(x)"});
             this.comboBox6.Location = new System.Drawing.Point(1070, 456);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(173, 21);
@@ -1083,7 +1072,6 @@
             this.Controls.Add(this.label28);
             this.Controls.Add(this.numericUpDown17);
             this.Controls.Add(this.label27);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.button6);
@@ -1225,7 +1213,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.NumericUpDown numericUpDown17;
         private System.Windows.Forms.ComboBox comboBox5;

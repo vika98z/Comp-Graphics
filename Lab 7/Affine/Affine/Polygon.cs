@@ -165,7 +165,7 @@ namespace Affine
         public void scale(float kx, float ky, float kz)
         {
             foreach (Point3D p in Points)
-                p.scale(kx, ky, kz);
+                p.Scale(kx, ky, kz);
             UpdateCenter();
         }
     }

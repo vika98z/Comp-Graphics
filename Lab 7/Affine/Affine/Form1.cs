@@ -272,6 +272,7 @@ namespace Affine
             rotateFigure.Show(g, 0);
         }
 
+        //GRAPHIC
         private void button8_Click(object sender, EventArgs e)
         {
             Graphic Graph = new Graphic((int)numericUpDown18.Value, (int)numericUpDown20.Value, (int)numericUpDown19.Value, 

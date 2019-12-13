@@ -481,9 +481,9 @@ namespace Affine
             {
                 foreach (var point in poly.Points)
                 {
-                    res += point.X + " ";
-                    res += point.Y + " ";
-                    res += point.Z + " ";
+                    res += Math.Truncate(point.X) + " ";
+                    res += Math.Truncate(point.Y) + " ";
+                    res += Math.Truncate(point.Z) + " ";
                 }
                 res += '\n';
             }

@@ -106,7 +106,7 @@ namespace Affine
                 return new PointF(c[0], c[1]); 
         }
 
-        public void show(Graphics g, Projection pr = 0, Pen pen = null)
+        public void Show(Graphics g, Projection pr = 0, Pen pen = null)
         {
             if (pen == null)
                 pen = Pens.Black;
@@ -268,7 +268,7 @@ namespace Affine
             return new Point3D(c[0], c[1], c[2]);
         }
 
-        public void scale(float kx, float ky, float kz)
+        public void Scale(float kx, float ky, float kz)
         {
             List<float> D = new List<float> { kx, 0,  0,  0,
                                               0,  ky, 0,  0,

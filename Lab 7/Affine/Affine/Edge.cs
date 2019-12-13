@@ -88,8 +88,8 @@ namespace Affine
 
         public void scale(float kx, float ky, float kz)
         {
-            First.scale(kx, ky, kz);
-            Second.scale(kx, ky, kz);
+            First.Scale(kx, ky, kz);
+            Second.Scale(kx, ky, kz);
         }
     }
 }
