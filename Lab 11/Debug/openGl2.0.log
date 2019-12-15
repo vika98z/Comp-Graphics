@@ -1,0 +1,25 @@
+﻿  task1.cpp
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(65,33): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(66,34): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(67,25): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(93,26): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(131,40): warning C4305: инициализация: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(132,41): warning C4305: инициализация: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(160,35): warning C4305: инициализация: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(195,26): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(200,31): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(205,26): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(210,31): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(225,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(234,18): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(235,23): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(237,18): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(238,23): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(248,18): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(249,18): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(255,23): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(256,23): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(291,26): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(304,25): warning C4305: аргумент: усечение из "double" в "GLfloat"
+C:\Users\111\source\repos\openGl2.0\openGl2.0\task1.cpp(310,25): warning C4305: аргумент: усечение из "double" в "GLfloat"
+  openGl2.0.vcxproj -> C:\Users\111\source\repos\openGl2.0\openGl2.0\Debug\openGl2.0.exe
