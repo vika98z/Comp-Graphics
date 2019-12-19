@@ -45,65 +45,67 @@ namespace Affine
                     Polygons.Add(p);
                 }
 
+                //foreach (var f in Polygons)
+                //    f.translate(Ax, Ay, Az);
+
+                //Points = new List<Point3D>();
+                //Polygons = new List<Polygon>();
+                //Points.AddRange(startPoints);
+                //List<Point3D> rotatedPoints = new List<Point3D>();
+
+                //var startCount = startPoints.Count;
+
+
+                //Points.Add(Points[0]);
+                //Points.Add(Points[1]);
+
+                //var n = startPoints.Count;
+                //for (int k = 0; k < n - 1; k++)
+                //{
+                //    for (int i = 0; i <= Points.Count; i += 4)
+                //    {
+                //        if (i != Points.Count - 2)// - 3)  -2
+                //        {
+                //            Polygons.Add(
+                //                new Polygon(
+                //                    new List<Point3D>
+                //                        {
+                //                        Points[i],
+                //                        Points[i+1],
+                //                        Points[i+2],
+                //                        Points[i+3],
+                //                        Points[i+1],
+                //                        Points[i+3]
+                //                        }
+                //                )
+                //             );
+                //        }
+                //        //else
+                //        //{
+                //        //    Polygons.Add(
+                //        //        new Polygon(
+                //        //            new List<Point3D>
+                //        //                {
+                //        //                Points[i],
+                //        //                Points[i+1],
+                //        //                Points[0],
+                //        //                Points[1],
+                //        //                Points[1+1],
+                //        //                Points[1]
+                //        //                }
+                //        //        )
+                //        //     );
+                //        //}
+                //    }
+
+                //}
+
                 foreach (var p in startPoints)
                     p.rotate(angle, axis);
             }
 
 
-            //foreach (var f in Polygons)
-            //    f.translate(Ax, Ay, Az);
-
-            //Points = new List<Point3D>();
-            //Polygons = new List<Polygon>();
-            //Points.AddRange(startPoints);
-            //List<Point3D> rotatedPoints = new List<Point3D>();
-
-            //var startCount = startPoints.Count;
-
-
-            //Points.Add(Points[0]);
-            //Points.Add(Points[1]);
-
-            //var n = startPoints.Count;
-            //for (int k = 0; k < n - 1; k++)
-            //{
-            //    for (int i = 0; i <= Points.Count; i += 4)
-            //    {
-            //        if (i != Points.Count - 2)// - 3)  -2
-            //        {
-            //            Polygons.Add(
-            //                new Polygon(
-            //                    new List<Point3D>
-            //                        {
-            //                        Points[i],
-            //                        Points[i+1],
-            //                        Points[i+2],
-            //                        Points[i+3],
-            //                        Points[i+1],
-            //                        Points[i+3]
-            //                        }
-            //                )
-            //             );
-            //        }
-            //        //else
-            //        //{
-            //        //    Polygons.Add(
-            //        //        new Polygon(
-            //        //            new List<Point3D>
-            //        //                {
-            //        //                Points[i],
-            //        //                Points[i+1],
-            //        //                Points[0],
-            //        //                Points[1],
-            //        //                Points[1+1],
-            //        //                Points[1]
-            //        //                }
-            //        //        )
-            //        //     );
-            //        //}
-            //    }
-
-            //}
+            
         }
 
         public new void Show(Graphics g, Projection pr = 0, Pen pen = null)

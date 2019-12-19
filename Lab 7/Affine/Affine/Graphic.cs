@@ -50,7 +50,7 @@ namespace Affine
                     F = (x, y) => (float)Math.Cos(x * x + y * y);
                     break;
                 case 2:
-                    F = (x, y) => (float)Math.Sin(x) * 3f + (float)Math.Cos(y) * 3f;
+                    F = (x, y) => (float)Math.Sin(x) * 10f + (float)Math.Cos(y) * 10f;
                     break;
                 case 3:
                     F = (x, y) => (float)Math.Sin(x) * 5f;

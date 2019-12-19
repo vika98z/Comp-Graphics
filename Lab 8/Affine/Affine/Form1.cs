@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Affine
@@ -8,6 +9,8 @@ namespace Affine
 
     public enum Axis { AXIS_X, AXIS_Y, AXIS_Z, LINE };
     public enum Projection { PERSPECTIVE = 0, ISOMETRIC, ORTHOGR_X, ORTHOGR_Y, ORTHOGR_Z };
+    public enum Clipping { Clipp = 0, ZBuffer };
+
     public partial class Form1 : Form
     {
         Graphics g;
@@ -15,6 +18,10 @@ namespace Affine
         Axis rotateLineMode = 0;
         Polyhedron figure = null;
         int revertId = -1;
+
+        Clipping clipping = 0;
+
+        Camera camera = new Camera(50,50);
 
         public Form1()
         {
@@ -66,7 +73,12 @@ namespace Affine
             }
 
             g.Clear(Color.White);
-            figure.Show(g, projection);
+            if (clipping == 0)
+                figure.Show(g, projection);
+            else
+                show_z_buff();
+
+            camera.show(g, projection);
         }
 
         //DRAW FIGURE
@@ -79,35 +91,50 @@ namespace Affine
                     g.Clear(Color.White);
                     figure = new Polyhedron();
                     figure.Tetrahedron();
-                    figure.Show(g, projection);
+                    if (clipping == 0)
+                        figure.Show(g, projection);
+                    else
+                        show_z_buff();
                     break;
                 case 1:
                     //Hexahedron
                     g.Clear(Color.White);
                     figure = new Polyhedron();
                     figure.Hexahedron();
-                    figure.Show(g, projection);
+                    if (clipping == 0)
+                        figure.Show(g, projection);
+                    else
+                        show_z_buff();
                     break;
                 case 2:
                     //Oktahedron
                     g.Clear(Color.White);
                     figure = new Polyhedron();
                     figure.Octahedron();
-                    figure.Show(g, projection);
+                    if (clipping == 0)
+                        figure.Show(g, projection);
+                    else
+                        show_z_buff();
                     break;
                 case 3:
                     //Icosahedron
                     g.Clear(Color.White);
                     figure = new Polyhedron();
                     figure.Icosahedron();
-                    figure.Show(g, projection);
+                    if (clipping == 0)
+                        figure.Show(g, projection);
+                    else
+                        show_z_buff();
                     break;
                 case 4:
                     //Dodecahedron
                     g.Clear(Color.White);
                     figure = new Polyhedron();
                     figure.Dodecahedron();
-                    figure.Show(g, projection);
+                    if (clipping == 0)
+                        figure.Show(g, projection);
+                    else
+                        show_z_buff();
                     break;
                 default:
                     break;
@@ -170,7 +197,12 @@ namespace Affine
             figure.Translate(Ax, Ay, Az);
 
             g.Clear(Color.White);
-            figure.Show(g, projection);
+            if (clipping == 0)
+                figure.Show(g, projection);
+            else
+                show_z_buff();
+
+            camera.show(g, projection);
         }
 
         //CAMERA PROJECTION
@@ -179,6 +211,8 @@ namespace Affine
             g.Clear(Color.White);
             if (figure != null)
                 figure.Show(g, projection);
+
+            camera.show(g, projection);
         }
 
         //REVERT FUNCTIONS
@@ -207,35 +241,92 @@ namespace Affine
         //INVOKE ROTATE AROUND LINE
         private void button4_Click(object sender, EventArgs e) => RotateAroundLine();
 
-        //LOAD
-        private void button5_Click(object sender, EventArgs e)
+        //CLIPPING
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            string filename = openFileDialog1.FileName;
-            string fileText = System.IO.File.ReadAllText(filename);
-
-            figure = new Polyhedron(fileText);
-            g.Clear(Color.White);
-            figure.Show(g, 0);
+            switch (comboBox5.SelectedIndex)
+            {
+                case 0:
+                    clipping = 0;
+                    break;
+                case 1:
+                    clipping = Clipping.ZBuffer;
+                    break;
+                default:
+                    clipping = 0;
+                    break;
+            }
         }
 
-        //SAVE
+        //Z-BUFFER
+        private void show_z_buff()
+        {
+            int[] buff = new int[pictureBox1.Width * pictureBox1.Height];
+            int[] colors = new int[pictureBox1.Width * pictureBox1.Height];
+
+            figure.calculateZBuffer(camera.view, pictureBox1.Width, pictureBox1.Height, out buff, out colors);
+
+            Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = bmp;
+
+            g.Clear(Color.White);
+
+            for (int i = 0; i < pictureBox1.Width; ++i)
+                for (int j = 0; j < pictureBox1.Height; ++j)
+                {
+                    Color c = Color.FromArgb(buff[i * pictureBox1.Height + j], buff[i * pictureBox1.Height + j], buff[i * pictureBox1.Height + j]);
+                    bmp.SetPixel(i, j, c);
+                }
+
+            pictureBox1.Refresh();
+        }
+
+        //CAMERA
         private void button6_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            string filename = saveFileDialog1.FileName;
-            string text = "";
-
-            if (figure != null)
+            if (figure == null)
             {
-                text = figure.Save();                
+                MessageBox.Show("Сначала создайте фигуру", "Нет фигуры", MessageBoxButtons.OK);
             }
-            System.IO.File.WriteAllText(filename, text);
+            else
+            {
+                int dx = (int)numericUpDown22.Value,
+                        dy = (int)numericUpDown22.Value,
+                        dz = (int)numericUpDown22.Value;
+                figure.Translate(-dx, -dy, -dz);
+
+                camera.translate(dx, dy, dz);
+
+                float old_x_camera = figure.Center.X,
+                        old_y_camera = figure.Center.Y,
+                        old_z_camera = figure.Center.Z;
+                //figure.Translate(-old_x_camera, -old_y_camera, -old_z_camera);
+                camera.translate(-old_x_camera, -old_y_camera, -old_z_camera);
+
+                double angleOX = (int)numericUpDown19.Value;
+                figure.Rotate(-angleOX, Axis.AXIS_X);
+                camera.rotate(angleOX, Axis.AXIS_X);
+
+                double angleOY = (int)numericUpDown18.Value;
+                figure.Rotate(-angleOY, Axis.AXIS_Y);
+                camera.rotate(angleOY, Axis.AXIS_Y);
+
+                double angleOZ = (int)numericUpDown17.Value;
+                figure.Rotate(-angleOZ, Axis.AXIS_Z);
+                camera.rotate(angleOZ, Axis.AXIS_Z);
+
+                //figure.Translate(old_x_camera, old_y_camera, old_z_camera);
+                camera.translate(old_x_camera, old_y_camera, old_z_camera);
+            }
+
+            g.Clear(Color.White);
+
+            camera.show(g, projection);
+            figure.Show(g, projection);
+            if (clipping != 0)
+                show_z_buff();
         }
 
-        //ROTATION FIGURE
         private void button7_Click(object sender, EventArgs e)
         {
             List<Point3D> points = new List<Point3D>();
@@ -248,40 +339,31 @@ namespace Affine
             }
 
             Axis axis = 0;
-            switch (comboBox5.SelectedItem.ToString())
+            switch (comboBox6.SelectedItem.ToString())
             {
                 case "OX":
-                        axis = 0;
-                        break;
+                    axis = 0;
+                    break;
                 case "OY":
-                        axis = Axis.AXIS_Y;
-                        break;
+                    axis = Axis.AXIS_Y;
+                    break;
                 case "OZ":
-                        axis = Axis.AXIS_Z;
-                        break;
+                    axis = Axis.AXIS_Z;
+                    break;
                 default:
-                        axis = 0;
-                        break;
+                    axis = 0;
+                    break;
             }
 
-            RotationFigure rotateFigure = new RotationFigure(points, axis, (int)numericUpDown17.Value);
+            RotationFigure rotateFigure = new RotationFigure(points, axis, (int)numericUpDown23.Value);
 
             figure = rotateFigure;
 
             g.Clear(Color.White);
-            rotateFigure.Show(g, 0);
-        }
-
-        //GRAPHIC
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Graphic Graph = new Graphic((int)numericUpDown18.Value, (int)numericUpDown20.Value, (int)numericUpDown19.Value, 
-                (int)numericUpDown21.Value, (int)numericUpDown22.Value, comboBox6.SelectedIndex);
-
-            figure = Graph;
-
-            g.Clear(Color.White);
-            Graph.Show(g, 0);
+            if (clipping == 0)
+                rotateFigure.Show(g, 0);
+            else
+                show_z_buff();
         }
     }
 }

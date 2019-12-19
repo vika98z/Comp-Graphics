@@ -122,9 +122,9 @@ namespace Affine
 
             List<PointF> pts;
 
-            find_normal(Center, new Edge(new Point3D(0, 0, 500), new Point3D(0, 0, 500)));
+            FindNormal(Center, new Edge(new Point3D(0, 0, 500), new Point3D(0, 0, 500)));
 
-            if (IsVisible)
+            //if (IsVisible)
             {
                 switch (pr)
                 {
@@ -177,31 +177,31 @@ namespace Affine
         }
 
         //NORMAL VECTOR
-        public void find_normal(Point3D p_center, Edge camera)
+        public void FindNormal(Point3D pCenter, Edge camera)
         {
+            Point3D first = Points[0], second = Points[1], third = Points[2];
+            var A = first.Y * (second.Z - third.Z) + second.Y * (third.Z - first.Z) + third.Y * (first.Z - second.Z);
+            var B = first.Z * (second.X - third.X) + second.Z * (third.X - first.X) + third.Z * (first.X - second.X);
+            var C = first.X * (second.Y - third.Y) + second.X * (third.Y - first.Y) + third.X * (first.Y - second.Y);
 
+            Normal = new List<float> { A, B, C };
 
-            //Point3D Q = Points[1], R = Points[2], S = Points[0];
-            //List<float> QR = new List<float> { R.X - Q.X, R.Y - Q.Y, R.Z - Q.Z };
-            //List<float> QS = new List<float> { S.X - Q.X, S.Y - Q.Y, S.Z - Q.Z };
+            List<float> SC = new List<float> { second.X - pCenter.X, second.Y - pCenter.Y, second.Z - pCenter.Z };
+            if (Point3D.mul_matrix(Normal, 1, 3, SC, 3, 1)[0] > 1E-6)
+            {
+                Normal[0] *= -1;
+                Normal[1] *= -1;
+                Normal[2] *= -1;
+            }
 
-            //Normal = new List<float> { QR[1] * QS[2] - QR[2] * QS[1],
-            //                           -(QR[0] * QS[2] - QR[2] * QS[0]),
-            //                           QR[0] * QS[1] - QR[1] * QS[0] };
+            Point3D P = camera.First;
+            Point3D E = new Point3D( P.X - Center.X, P.Y - Center.Y, P.Z - Center.Z );
+            double angle = Math.Acos((Normal[0] * E.X + Normal[1] * E.Y + Normal[2] * E.Z) / 
+                ((Math.Sqrt(Normal[0] * Normal[0] + Normal[1] * Normal[1] + Normal[2] * Normal[2]) * 
+                Math.Sqrt(E.X * E.X + E.Y * E.Y + E.Z * E.Z))));
+            angle = angle * 180 / Math.PI;
 
-            //List<float> CQ = new List<float> { Q.X - p_center.X, Q.Y - p_center.Y, Q.Z - p_center.Z };
-            //if (Point3D.mul_matrix(Normal, 1, 3, CQ, 3, 1)[0] > 1E-6)
-            //{
-            //    Normal[0] *= -1;
-            //    Normal[1] *= -1;
-            //    Normal[2] *= -1;
-            //}
-
-            //Point3D E = camera.First;
-            //Point3D E = new Point3D(0, 0, 100);
-            //List<float> CE = new List<float> { E.X - Center.X, E.Y - Center.Y, E.Z - Center.Z };
-            //float dot_product = Point3D.mul_matrix(Normal, 1, 3, CE, 3, 1)[0];
-            //IsVisible = Math.Abs(dot_product) < 1E-6 || dot_product < 0;
+            IsVisible = !(angle <= 90);
         }
     }
 }
