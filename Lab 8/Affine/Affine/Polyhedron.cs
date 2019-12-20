@@ -494,39 +494,31 @@ namespace Affine
             return res;
         }
         
-        public void calculateZBuffer(Edge camera, int width, int height, out int[] buf, out int[] colors)
+        public void calculateZBuffer(int width, int height, out int[] buf)
         {
             buf = new int[width * height];
             for (int i = 0; i < width * height; ++i)
                 buf[i] = int.MinValue;
-            colors = new int[width * height];
-            for (int i = 0; i < width * height; ++i)
-                colors[i] = 255;
 
-            int color = 0;
             foreach (var f in Polygons)
             {
-                color = (color + 30) % 255;
-                // треугольник
                 Point3D P0 = new Point3D(f.Points[0]);
                 Point3D P1 = new Point3D(f.Points[1]);
                 Point3D P2 = new Point3D(f.Points[2]);
-                help(camera, P0, P1, P2, buf, width, height, colors, color);
-                // 4
+                help(P0, P1, P2, buf, width, height);
                 if (f.Points.Count > 3)
                 {
                     P0 = new Point3D(f.Points[2]);
                     P1 = new Point3D(f.Points[3]);
                     P2 = new Point3D(f.Points[0]);
-                    help(camera, P0, P1, P2, buf, width, height, colors, color);
+                    help(P0, P1, P2, buf, width, height);
                 }
-                // 5  убейте додекаэдр,пожалуйста
                 if (f.Points.Count > 4)
                 {
                     P0 = new Point3D(f.Points[3]);
                     P1 = new Point3D(f.Points[4]);
                     P2 = new Point3D(f.Points[0]);
-                    help(camera, P0, P1, P2, buf, width, height, colors, color);
+                    help(P0, P1, P2, buf, width, height);
                 }
             }
 
@@ -554,7 +546,7 @@ namespace Affine
 
         }
 
-        private void help(Edge camera, Point3D P0, Point3D P1, Point3D P2, int[] buff, int width, int height, int[] colors, int color)
+        private void help(Point3D P0, Point3D P1, Point3D P2, int[] buff, int width, int height)
         {
             PointF p0 = P0.make_perspective();
             PointF p1 = P1.make_perspective();
@@ -588,10 +580,10 @@ namespace Affine
                 p2.X = tmppp.X; p2.Y = tmppp.Y;
             }
 
-            drawRectangle(camera, P0, P1, P2, buff, width, height, colors, color);
+            drawRectangle(P0, P1, P2, buff, width, height);
         }
 
-        private void drawRectangle(Edge camera, Point3D P0, Point3D P1, Point3D P2, int[] buff, int width, int height, int[] colors, int color)
+        private void drawRectangle(Point3D P0, Point3D P1, Point3D P2, int[] buff, int width, int height)
         {
             PointF p0 = P0.make_perspective();
             PointF p1 = P1.make_perspective();
@@ -659,7 +651,6 @@ namespace Affine
                     if (z > buff[xx * height + yy])
                     {
                         buff[xx * height + yy] = (int)(z + 0.5);
-                        colors[xx * height + yy] = color;
                     }
                 }
             }

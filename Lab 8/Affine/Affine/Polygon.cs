@@ -201,7 +201,7 @@ namespace Affine
                 Math.Sqrt(E.X * E.X + E.Y * E.Y + E.Z * E.Z))));
             angle = angle * 180 / Math.PI;
 
-            IsVisible = !(angle <= 90);
+            IsVisible = angle >= 90;
         }
     }
 }

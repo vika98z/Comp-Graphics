@@ -141,8 +141,8 @@ namespace Affine
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) => projection = (Projection)comboBox2.SelectedIndex;
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) => revertId = comboBox3.SelectedIndex;
+        //private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) => projection = (Projection)comboBox2.SelectedIndex;
+        //private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) => revertId = comboBox3.SelectedIndex;
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             rotateLineMode = (Axis)comboBox4.SelectedIndex;
@@ -210,7 +210,11 @@ namespace Affine
         {
             g.Clear(Color.White);
             if (figure != null)
-                figure.Show(g, projection);
+                if (clipping == 0)
+                    figure.Show(g, projection);
+                else
+                    show_z_buff();
+
 
             camera.show(g, projection);
         }
@@ -222,19 +226,28 @@ namespace Affine
             {
                 figure.reflectX();
                 g.Clear(Color.White);
-                figure.Show(g, projection);
+                if (clipping == 0)
+                    figure.Show(g, projection);
+                else
+                    show_z_buff();
             }
             else if (revertId == 1)
             {
                 figure.reflectY();
                 g.Clear(Color.White);
-                figure.Show(g, projection);
+                if (clipping == 0)
+                    figure.Show(g, projection);
+                else
+                    show_z_buff();
             }
             else if (revertId == 2)
             {
                 figure.reflectZ();
                 g.Clear(Color.White);
-                figure.Show(g, projection);
+                if (clipping == 0)
+                    figure.Show(g, projection);
+                else
+                    show_z_buff();
             }
         }
 
@@ -262,9 +275,8 @@ namespace Affine
         private void show_z_buff()
         {
             int[] buff = new int[pictureBox1.Width * pictureBox1.Height];
-            int[] colors = new int[pictureBox1.Width * pictureBox1.Height];
 
-            figure.calculateZBuffer(camera.view, pictureBox1.Width, pictureBox1.Height, out buff, out colors);
+            figure.calculateZBuffer(pictureBox1.Width, pictureBox1.Height, out buff);
 
             Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             pictureBox1.Image = bmp;
@@ -291,8 +303,8 @@ namespace Affine
             else
             {
                 int dx = (int)numericUpDown22.Value,
-                        dy = (int)numericUpDown22.Value,
-                        dz = (int)numericUpDown22.Value;
+                        dy = (int)numericUpDown21.Value,
+                        dz = (int)numericUpDown20.Value;
                 figure.Translate(-dx, -dy, -dz);
 
                 camera.translate(dx, dy, dz);
